@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kos · Mira a tu paciente, Kos escribe la historia</title>
+<meta name="description" content="Graba la consulta con el consentimiento de tu paciente y Kos te entrega la historia clínica ordenada por secciones, lista para revisar y firmar.">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="kos-landing.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.38 3.62a1 1 0 0 1 3 3L7.37 18.64a2 2 0 0 1-.86.5l-2.87.84a.5.5 0 0 1-.62-.62l.84-2.87a2 2 0 0 1 .5-.86z"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-steth" viewBox="0 0 24 24"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+</svg>
+
+<header class="k-head">
+  <div class="k-wrap k-head__row">
+    <a class="k-logo" href="#" aria-label="Kos, inicio">
+      <img class="k-logo__light" src="assets/Kos-logo-bg-light.png" alt="Kos" width="59" height="26">
+      <img class="k-logo__dark" src="assets/Kos-logo-bg-dark.png" alt="Kos" width="50" height="26">
+    </a>
+    <nav class="k-nav" aria-label="Secciones">
+      <a class="k-link" href="#producto">El producto</a>
+      <a class="k-link" href="#datos">Datos</a>
+      <a class="k-link" href="#privacidad">Privacidad</a>
+      <a class="k-link" href="#founders">Founders</a>
+      <a class="k-link" href="#preguntas">Preguntas</a>
+    </nav>
+    <div class="k-head__actions">
+      <a class="k-link" href="https://dev.med-kos.com/login">Ingresar</a>
+      <a class="k-btn" href="https://dev.med-kos.com/register">Probar gratis</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- 1 · Portada con la animación del flujo real -->
+  <section class="k-hero" aria-labelledby="titulo">
+    <div class="k-wrap k-hero__grid">
+      <div>
+        <span class="k-pill"><i></i>Membresía Founders abierta</span>
+        <h1 class="k-h1" id="titulo">Vuelve a mirar a tu paciente. <span>Kos escribe la historia.</span></h1>
+        <p class="k-lede">Grabas la consulta con el consentimiento de tu paciente y Kos te entrega la historia clínica ordenada por secciones, lista para revisar y firmar. Sin teclear mientras te hablan.</p>
+        <div class="k-hero__cta">
+          <a class="k-btn k-btn--big" href="https://dev.med-kos.com/register">Probar gratis</a>
+          <a class="k-btn k-btn--big k-btn--ghost" href="#producto">Ver el producto</a>
+        </div>
+        <p class="k-hero__offer">Plan gratis con 5 historias clínicas al mes.</p>
+        <div class="k-facts">
+          <div><b>6 secciones</b><span>de la historia, ordenadas solas</span></div>
+          <div><b>0 casillas</b><span>que llenar durante la consulta</span></div>
+          <div><b>Tu firma</b><span>tú revisas y apruebas cada historia</span></div>
+        </div>
+      </div>
+
+      <figure>
+        <div class="k-app" id="k-anim" aria-label="Animación: marcas el consentimiento, grabas la consulta, Kos la procesa y entrega la historia por secciones" role="img">
+          <div class="k-app__side" aria-hidden="true">
+            <img src="assets/kos-simbolo.png" alt="">
+            <span class="is-on"><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mic"/></svg></span>
+            <span><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-folder"/></svg></span>
+            <span><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-layout"/></svg></span>
+          </div>
+          <div class="k-app__main" aria-hidden="true">
+            <div class="k-app__top">
+              <p class="k-app__hi">Nueva consulta<small>Historia clínica de ingreso</small></p>
+              <span class="k-conn"><i></i>Conexión estable</span>
+            </div>
+            <div class="k-scenes">
+              <!-- Escena 1 · grabar -->
+              <div class="k-scene is-on" data-scene="rec">
+                <div class="k-panel">
+                  <div class="k-recbox">
+                    <span class="k-mic"><svg class="k-ico" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mic"/></svg></span>
+                    <span class="k-timer" data-timer>00:00</span>
+                    <span class="k-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                    <p data-rec-text>Marca el consentimiento para grabar</p>
+                  </div>
+                  <div class="k-check">
+                    <span class="k-box"><svg class="k-ico" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg></span>
+                    <span>Tengo el consentimiento previo del paciente para grabar esta consulta.</span>
+                  </div>
+                  <div class="k-field">
+                    <small>Tipo de registro clínico</small>
+                    <span class="k-select">Historia clínica de ingreso <svg class="k-ico" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-down"/></svg></span>
+                  </div>
+                  <span class="k-stop">Procesar en Kos</span>
+                </div>
+              </div>
+              <!-- Escena 2 · procesar -->
+              <div class="k-scene" data-scene="proc">
+                <div class="k-panel k-proc">
+                  <h4>Procesando la consulta</h4>
+                  <div class="k-bar"><i></i></div>
+                  <ul class="k-steps-mini">
+                    <li data-step>Audio recibido</li>
+                    <li data-step>Transcribiendo la conversación</li>
+                    <li data-step>Ordenando la historia por secciones</li>
+                  </ul>
+                  <p>Puedes empezar a grabar al siguiente paciente mientras tanto.</p>
+                </div>
+              </div>
+              <!-- Escena 3 · historia -->
+              <div class="k-scene" data-scene="doc">
+                <div class="k-panel">
+                  <div class="k-doc__head">
+                    <div><b>Historia clínica de ingreso</b><small>Lista para revisar</small></div>
+                    <span class="k-tag">Ejemplo</span>
+                  </div>
+                  <div class="k-tools">
+                    <span class="k-tool"><svg class="k-ico" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pen"/></svg>Editar</span>
+                    <span class="k-tool"><svg class="k-ico" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-copy"/></svg>Copiar todo</span>
+                    <span class="k-tool"><svg class="k-ico" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-file"/></svg>Descargar Word</span>
+                  </div>
+                  <div class="k-secs">
+                    <div><b>Motivo de consulta</b><p>Dificultad para respirar desde ayer.</p></div>
+                    <div><b>Enfermedad actual</b><p>Paciente con antecedente de EPOC que consulta por aumento de la disnea y de la tos con expectoración desde hace 24 horas.</p></div>
+                    <div><b>Antecedentes médicos</b><p>EPOC. Exfumador.</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="k-app__caption">Así funciona Kos. La historia del ejemplo es ficticia.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2 · Así es Kos por dentro -->
+  <section class="k-sec" id="producto" aria-labelledby="t-producto">
+    <div class="k-wrap">
+      <div class="k-sec__head">
+        <span class="k-kicker">El producto</span>
+        <h2 class="k-h2" id="t-producto">Así es Kos por dentro</h2>
+        <p class="k-sec__lede">No es un dictado ni un chat. Es tu historia clínica, escrita a partir de la conversación y ordenada como la escribirías tú.</p>
+      </div>
+      <div class="k-inside">
+        <div class="k-feats">
+          <div class="k-feat">
+            <span class="k-feat__ico"><svg class="k-ico" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-mic"/></svg></span>
+            <div><h3>Graba como te quede más fácil</h3><p>En el computador, con el celular como micrófono o subiendo un audio que ya tengas.</p></div>
+          </div>
+          <div class="k-feat">
+            <span class="k-feat__ico"><svg class="k-ico" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-list"/></svg></span>
+            <div><h3>La historia, por secciones</h3><p>Identificación, motivo de consulta, enfermedad actual, antecedentes, revisión por sistemas y examen físico.</p></div>
+          </div>
+          <div class="k-feat">
+            <span class="k-feat__ico"><svg class="k-ico" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pen"/></svg></span>
+            <div><h3>Corriges y la llevas a tu sistema</h3><p>Tocas el texto para editarlo, copias la historia completa o por sección, o la descargas en Word.</p></div>
+          </div>
+          <div class="k-feat">
+            <span class="k-feat__ico"><svg class="k-ico" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-folder"/></svg></span>
+            <div><h3>Todas tus consultas en un lugar</h3><p>Tu biblioteca, ordenada por día, con buscador por paciente. Y tus plantillas para los textos que repites.</p></div>
+          </div>
+        </div>
+
+        <div class="k-lib" aria-hidden="true">
+          <div class="k-lib__list">
+            <div class="k-lib__bar"><b>Biblioteca</b><small>6 historias</small><div class="k-lib__search">Buscar paciente…</div></div>
+            <p class="k-lib__day">Hoy</p>
+            <div class="k-lib__item"><b>Paciente 41234567 <em>12:10</em></b><span class="busy">Procesando</span></div>
+            <div class="k-lib__item is-on"><b>Paciente 19876543 <em>11:40</em></b><span class="ok">Lista</span></div>
+            <div class="k-lib__item"><b>Paciente 52123456 <em>09:15</em></b><span class="ok">Lista</span></div>
+            <p class="k-lib__day">Ayer</p>
+            <div class="k-lib__item"><b>Paciente 10324567 <em>16:05</em></b><span class="ok">Lista</span></div>
+          </div>
+          <div class="k-lib__detail">
+            <div class="k-lib__paper">
+              <div class="k-doc__head">
+                <div><b>Paciente 19876543</b><small>Historia clínica de ingreso · 11:40</small></div>
+                <span class="k-tag">Ejemplo</span>
+              </div>
+              <div class="k-tools">
+                <span class="k-tool"><svg class="k-ico" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pen"/></svg>Editar</span>
+                <span class="k-tool"><svg class="k-ico" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-copy"/></svg>Copiar todo</span>
+                <span class="k-tool"><svg class="k-ico" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-file"/></svg>Descargar Word</span>
+              </div>
+              <div class="k-lib__tabs"><span class="is-on">Identificación</span><span>Motivo de consulta</span><span>Enfermedad actual</span><span>Antecedentes</span><span>Examen físico</span></div>
+              <div class="k-lib__sec">
+                <b>1. Identificación <svg class="k-ico" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-copy"/></svg></b>
+                <dl><dt>Edad</dt><dd>62 años</dd><dt>Sexo</dt><dd>Masculino</dd><dt>Ocupación</dt><dd>Pensionado</dd><dt>Residencia</dt><dd>Bogotá</dd></dl>
+              </div>
+              <div class="k-lib__sec">
+                <b>2. Motivo de consulta <svg class="k-ico" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-copy"/></svg></b>
+                <p>Dificultad para respirar desde ayer.</p>
+              </div>
+              <div class="k-lib__sec">
+                <b>3. Enfermedad actual <svg class="k-ico" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-copy"/></svg></b>
+                <p>Paciente con antecedente de EPOC que consulta por aumento de la disnea y de la tos con expectoración desde hace 24 horas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Para quién es -->
+  <section class="k-sec k-sec--page" aria-labelledby="t-quien">
+    <div class="k-wrap">
+      <div class="k-sec__head">
+        <span class="k-kicker">¿Para quién es?</span>
+        <h2 class="k-h2" id="t-quien">Hecho para el médico que pasa consulta</h2>
+      </div>
+      <div class="k-who">
+        <div class="k-who__card">
+          <h3><svg class="k-ico" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-steth"/></svg>Médico general</h3>
+          <p>Consulta de 15 o 20 minutos y pacientes de todo tipo. Kos escribe mientras tú atiendes, para que esos minutos sean del paciente.</p>
+        </div>
+        <div class="k-who__card">
+          <h3><svg class="k-ico" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-building"/></svg>Consulta particular</h3>
+          <p>Atiendes solo y nadie te pasa la nota en limpio. Grabas desde el computador o el celular y la historia queda lista para revisar.</p>
+        </div>
+        <div class="k-who__card">
+          <h3><svg class="k-ico" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-route"/></svg>Varios trabajos</h3>
+          <p>Una IPS por la mañana, tu consultorio por la tarde. Kos no reemplaza ningún sistema: copias la historia y la pegas donde estés ese día.</p>
+        </div>
+        <div class="k-who__card">
+          <h3><svg class="k-ico" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cap"/></svg>Residente</h3>
+          <p>Muchas historias y poco tiempo. Notas completas y ordenadas, que tú revisas y puedes defender en la revista de casos.</p>
+        </div>
+      </div>
+      <div class="k-founders-strip">
+        <p><b>Membresía Founders:</b> <span class="k-dato">[DATO: descuento]</span> de por vida para los primeros médicos, y voz en lo que Kos aprende a escribir después: evoluciones, urgencias y epicrisis.</p>
+        <a href="#founders">Ver la membresía</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · ¿Te suena? -->
+  <section class="k-sec" id="problema" aria-labelledby="t-problema">
+    <div class="k-wrap">
+      <div class="k-sec__head">
+        <span class="k-kicker">El problema</span>
+        <h2 class="k-h2" id="t-problema">¿Te suena alguna de estas situaciones?</h2>
+      </div>
+      <div class="k-pains">
+        <div class="k-pain">
+          <h3>«Mi paciente me habla y yo le respondo mirando la pantalla.»</h3>
+          <p>Con Kos <strong>grabas y lo miras a él</strong>. La historia se escribe sola a partir de la conversación.</p>
+        </div>
+        <div class="k-pain">
+          <h3>«La consulta dura 15 minutos y se me va llenando casillas.»</h3>
+          <p>Durante la consulta <strong>no hay campos que llenar</strong>. Kos los ordena por ti al terminar.</p>
+        </div>
+        <div class="k-pain">
+          <h3>«Termino las historias en la casa, en la noche.»</h3>
+          <p>Cuando el paciente sale, <strong>la historia ya está escrita</strong>. Solo te queda revisarla y firmarla.</p>
+        </div>
+        <div class="k-pain">
+          <h3>«Si algo no quedó escrito, el problema es mío.»</h3>
+          <p>Lo que se habló queda en la historia. <strong>Una nota completa es tu mejor respaldo</strong> ante una glosa o una queja.</p>
+        </div>
+        <div class="k-pain">
+          <h3>«Uso ChatGPT, pero no sé si está bien hacerlo.»</h3>
+          <p>Kos está hecho para la historia clínica: <strong>pide el consentimiento antes de grabar</strong> y te la entrega en sus secciones.</p>
+        </div>
+        <div class="k-pain">
+          <h3>«Cada sitio donde trabajo tiene un sistema distinto.»</h3>
+          <p>Kos no reemplaza ninguno. <strong>Copias o descargas en Word</strong> y lo llevas a donde lo necesites.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · Sin Kos vs con Kos -->
+  <section class="k-sec k-sec--page" aria-labelledby="t-vs">
+    <div class="k-wrap">
+      <div class="k-sec__head">
+        <span class="k-kicker">La diferencia</span>
+        <h2 class="k-h2" id="t-vs">Sin Kos vs. con Kos</h2>
+      </div>
+      <div class="k-vs">
+        <div class="k-vs__col">
+          <h3>Sin Kos</h3>
+          <ul>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-x"/></svg>Escribes mientras tu paciente te habla</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-x"/></svg>Llenas casillas con el siguiente paciente esperando</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-x"/></svg>Te llevas las notas pendientes a la casa</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-x"/></svg>En la historia queda lo que alcanzaste a escribir</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-x"/></svg>Pegas la consulta en un chat genérico, sin consentimiento de por medio</li>
+          </ul>
+        </div>
+        <div class="k-vs__col k-vs__col--kos">
+          <h3>Con Kos</h3>
+          <ul>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Miras, escuchas y examinas. Kos graba</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>La historia sale ordenada por secciones</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Al final del día solo revisas y firmas</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>En la historia queda lo que se habló</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Kos no graba sin el consentimiento de tu paciente</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Datos -->
+  <section class="k-sec" id="datos" aria-labelledby="t-datos">
+    <div class="k-wrap">
+      <div class="k-sec__head">
+        <span class="k-kicker">Los datos</span>
+        <h2 class="k-h2" id="t-datos">Lo que ya se sabe de escribir con IA en consulta</h2>
+        <p class="k-sec__lede">Estudios y encuestas en español, publicados este año. Ninguno es de Kos.</p>
+      </div>
+      <div class="k-data">
+        <div class="k-datum k-datum--big">
+          <b>95,7 %</b>
+          <p>del tiempo de consulta mirando al paciente con un escriba de IA, frente al 78,6 % tecleando.</p>
+          <div class="k-gaze" aria-hidden="true">
+            <div><div class="k-gaze__head"><span>Tecleando la historia</span><em>78,6 %</em></div><div class="k-gaze__track"><div class="k-gaze__fill"></div></div></div>
+            <div><div class="k-gaze__head"><span>Con un escriba de IA</span><em>95,7 %</em></div><div class="k-gaze__track"><div class="k-gaze__fill is-with"></div></div></div>
+          </div>
+          <small>Estudio piloto en un hospital pediátrico de Barcelona, 40 médicos y 197 consultas. Vallejo, Launes et al., <a href="https://www.elsevier.es/es-revista-medicina-clinica-2-articulo-escriba-medico-con-ia-consultas-S0025775326001910" target="_blank" rel="noopener noreferrer">Medicina Clínica, 2026</a>.</small>
+        </div>
+        <div class="k-datum">
+          <b>17 → 23</b>
+          <p>sobre 25: la calidad de las notas al usar el escriba, evaluadas a ciegas por tres pediatras.</p>
+          <small>Mismo estudio de Barcelona, 2026.</small>
+        </div>
+        <div class="k-datum">
+          <b>5.700</b>
+          <p>médicos de familia del IMSS, en México, ya escriben el expediente con la voz.</p>
+          <small>IMSS, citado por Milenio, 2026.</small>
+        </div>
+        <div class="k-datum">
+          <b>80,2 %</b>
+          <p>de los médicos de familia catalanes ya usa ChatGPT, casi siempre sin formación.</p>
+          <small>Encuesta a 373 socios de la CAMFiC, The Lancet Primary Care, 2026.</small>
+        </div>
+        <div class="k-datum">
+          <b>86,8 %</b>
+          <p>de las personas quiere que le avisen si se usa IA en su atención. Kos te pide confirmarlo antes de grabar.</p>
+          <small>Encuesta a 4.700 personas en España, 2026.</small>
+        </div>
+      </div>
+      <blockquote class="k-quote">
+        <p>«Por fin me miró a los ojos.»</p>
+        <footer>Un paciente del IMSS al salir de consulta. Su frase le dio nombre al programa de voz «Mírame a los ojos».</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- 6b · Privacidad y consentimiento (convención de la categoría; el consentimiento casi nadie lo muestra) -->
+  <section class="k-sec k-sec--page" id="privacidad" aria-labelledby="t-priv">
+    <div class="k-wrap k-priv">
+      <div>
+        <span class="k-kicker">Privacidad</span>
+        <h2 class="k-h2" id="t-priv">Tu paciente sabe que lo estás grabando</h2>
+        <p class="k-sec__lede">El consentimiento no es una recomendación al pie de página: está dentro de Kos. Sin esa casilla, no hay grabación.</p>
+        <div class="k-consent k-consent--spaced" aria-hidden="true">
+          <div class="k-check">
+            <span class="k-box"><svg class="k-ico" width="11" height="11" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg></span>
+            <span>Tengo el consentimiento previo del paciente para grabar esta consulta.</span>
+          </div>
+          <small>Así aparece en Kos antes de cada grabación.</small>
+        </div>
+      </div>
+      <dl class="k-priv__rows">
+        <div class="k-priv__row"><dt>Dónde se procesa el audio</dt><dd><span class="k-dato">[DATO: país o región de la nube]</span></dd></div>
+        <div class="k-priv__row"><dt>Cuándo se borra el audio</dt><dd><span class="k-dato">[DATO: plazo exacto]</span></dd></div>
+        <div class="k-priv__row"><dt>Si entrena modelos</dt><dd><span class="k-dato">[DATO: sí o no]</span></dd></div>
+        <div class="k-priv__row"><dt>Cómo se protege</dt><dd><span class="k-dato">[DATO: cifrado y certificaciones que Kos pueda probar]</span></dd></div>
+        <div class="k-priv__row"><dt>De quién es la historia</dt><dd>Tuya. Kos escribe el borrador; tú decides qué queda y lo firmas.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 7 · Testimonios (pendientes: solo reales, con permiso) -->
+  <section class="k-sec" aria-labelledby="t-testi">
+    <div class="k-wrap">
+      <div class="k-sec__head">
+        <span class="k-kicker">Testimonios</span>
+        <h2 class="k-h2" id="t-testi">Lo que dicen los médicos que ya usan Kos</h2>
+      </div>
+      <div class="k-testis">
+        <figure class="k-testi">
+          <div class="k-testi__who"><span class="k-testi__avatar">Foto</span><div><b><span class="k-dato">[DATO: nombre]</span></b><small>[Especialidad · país]</small></div></div>
+          <blockquote><span class="k-dato">[DATO: testimonio real, con permiso por escrito]</span></blockquote>
+        </figure>
+        <figure class="k-testi">
+          <div class="k-testi__who"><span class="k-testi__avatar">Foto</span><div><b><span class="k-dato">[DATO: nombre]</span></b><small>[Especialidad · país]</small></div></div>
+          <blockquote><span class="k-dato">[DATO: testimonio real, con permiso por escrito]</span></blockquote>
+        </figure>
+        <figure class="k-testi">
+          <div class="k-testi__who"><span class="k-testi__avatar">Foto</span><div><b><span class="k-dato">[DATO: nombre]</span></b><small>[Especialidad · país]</small></div></div>
+          <blockquote><span class="k-dato">[DATO: testimonio real, con permiso por escrito]</span></blockquote>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · Membresía Founders -->
+  <section class="k-sec k-sec--page" id="founders" aria-labelledby="t-founders">
+    <div class="k-wrap">
+      <div class="k-sec__head">
+        <span class="k-kicker">Precios</span>
+        <h2 class="k-h2" id="t-founders">Empieza gratis. <span>O entra como Founder.</span></h2>
+        <p class="k-sec__lede">Los primeros <span class="k-dato">[DATO: número de cupos]</span> médicos en confiar en Kos conservan su precio de por vida, mientras sigan activos.</p>
+      </div>
+      <div class="k-plans">
+        <div class="k-plan">
+          <div class="k-plan__name"><h3>Gratis</h3></div>
+          <div class="k-price"><b>$0</b><span>/ mes</span></div>
+          <p>Para probar Kos en tus consultas reales.</p>
+          <ul>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>5 historias clínicas al mes</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Computador, Android e iPhone</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Copiar y descargar en Word</li>
+          </ul>
+          <a class="k-btn k-btn--ghost" href="https://dev.med-kos.com/register">Crear cuenta gratis</a>
+        </div>
+        <div class="k-plan k-plan--founders">
+          <div class="k-plan__name"><h3>Membresía Founders</h3><span class="k-plan__badge">Hasta <span class="k-dato">[DATO: fecha]</span></span></div>
+          <div class="k-price"><b><span class="k-dato">[DATO: precio Founders]</span></b><s><span class="k-dato">[DATO: precio regular]</span></s><span>/ mes</span></div>
+          <p>Para los primeros médicos que confían en el proyecto. El precio se queda contigo.</p>
+          <ul>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Historias clínicas ilimitadas</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Tus plantillas</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Línea directa con el equipo por WhatsApp <em>Solo Founders</em></li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Voto en el próximo tipo de nota <em>Solo Founders</em></li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg>Precio bloqueado de por vida <em>Solo Founders</em></li>
+          </ul>
+          <a class="k-btn k-btn--big" href="https://dev.med-kos.com/register">Quiero ser Founder</a>
+        </div>
+      </div>
+      <p class="k-plans__note">¿Clínica, IPS o grupo de médicos? <a href="https://wa.me/573004067138">Escríbenos por WhatsApp</a> y armamos el acceso para tu equipo.</p>
+    </div>
+  </section>
+
+  <!-- 9 · Preguntas -->
+  <section class="k-sec" id="preguntas" aria-labelledby="t-faq">
+    <div class="k-wrap k-faq">
+      <div>
+        <span class="k-kicker">Preguntas</span>
+        <h2 class="k-h2" id="t-faq">Preguntas frecuentes</h2>
+        <p class="k-sec__lede">¿No está tu pregunta? <a class="k-link" href="https://wa.me/573004067138">Escríbenos por WhatsApp</a></p>
+      </div>
+      <div class="k-faq__list">
+        <details>
+          <summary>¿Y si Kos se equivoca?<svg class="k-ico" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Puede pasar, sobre todo con nombres de medicamentos. Por eso Kos te entrega un borrador y no una historia terminada: tú la lees, la corriges y la firmas. Nada sale de Kos sin que tú lo revises.</p>
+        </details>
+        <details>
+          <summary>¿Quién responde por la historia clínica?<svg class="k-ico" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Quien la firma, como hoy. Kos escucha, ordena y redacta; no opina sobre tu diagnóstico ni sobre tu conducta.</p>
+        </details>
+        <details>
+          <summary>¿A mi paciente le va a molestar que grabe?<svg class="k-ico" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Kos no graba hasta que marcas que tienes su consentimiento. En el estudio de Barcelona, la poca inquietud de las familias se resolvía con una explicación breve.</p>
+        </details>
+        <details>
+          <summary>¿Dónde queda el audio de la consulta?<svg class="k-ico" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Se procesa en <span class="k-dato">[DATO: país o región]</span>, se borra <span class="k-dato">[DATO: plazo]</span> y <span class="k-dato">[DATO: sí o no]</span> se usa para entrenar modelos. El detalle está en la sección de privacidad.</p>
+        </details>
+        <details>
+          <summary>¿Se conecta con el sistema de mi institución?<svg class="k-ico" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Kos no reemplaza tu sistema. Copias la historia completa o por secciones y la pegas en el sistema que uses, o la descargas en Word.</p>
+        </details>
+        <details>
+          <summary>¿En qué se diferencia de ChatGPT?<svg class="k-ico" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>ChatGPT es un chat de uso general. Kos está hecho para la consulta: graba con el consentimiento de tu paciente, entrega la historia en sus secciones y la guarda en tu biblioteca para revisarla y firmarla.</p>
+        </details>
+        <details>
+          <summary>¿Funciona desde el celular?<svg class="k-ico" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Sí. En Android con la app de Kos y en iPhone desde el navegador, agregándolo a tu pantalla de inicio. También puedes usar el celular como micrófono mientras trabajas en el computador.</p>
+        </details>
+        <details>
+          <summary>¿Qué tipos de historia escribe?<svg class="k-ico" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Hoy, historias clínicas de ingreso. Las evoluciones, urgencias y epicrisis vienen después, y los miembros Founders votan cuál llega primero.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 10 · Cierre -->
+<section class="k-final k-band" aria-labelledby="t-final">
+  <div class="k-wrap">
+    <h2 class="k-h2" id="t-final">Tu próxima consulta, <span>mirando a tu paciente.</span></h2>
+    <p>Graba con su consentimiento. Kos escribe la historia por secciones. Tú la revisas y la firmas.</p>
+    <div class="k-final__cta">
+      <a class="k-btn k-btn--big k-btn--on-band" href="https://dev.med-kos.com/register">Probar gratis</a>
+      <a class="k-btn k-btn--big k-btn--ghost-band" href="https://wa.me/573004067138">Hablar con el equipo</a>
+    </div>
+    <small>Plan gratis con 5 historias clínicas al mes.</small>
+    <p class="k-final__name">Kos lleva el nombre de la isla de Cos, donde, según la tradición, nació la medicina que mira al paciente. La historia clínica nació para contar su historia. Kos la escribe; tú la firmas.</p>
+  </div>
+</section>
+
+<footer class="k-foot">
+  <div class="k-wrap k-foot__row">
+    <span>© 2026 Kos</span>
+    <ul>
+      <li><a href="https://dev.med-kos.com/terms">Términos y condiciones</a></li>
+      <li><a href="https://dev.med-kos.com/privacy">Política de privacidad</a></li>
+      <li><a href="https://dev.med-kos.com/data-processing-agreement">Tratamiento de datos</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* Animación de la portada: consentimiento → grabar → procesar → historia. Se repite.
+   Con «reducir movimiento» se queda quieta en la historia terminada. Se pausa fuera de pantalla. */
+(function () {
+  var app = document.getElementById('k-anim');
+  if (!app) return;
+  var scenes = {};
+  app.querySelectorAll('[data-scene]').forEach(function (el) { scenes[el.dataset.scene] = el; });
+  var recScene = scenes.rec;
+  var recText = app.querySelector('[data-rec-text]');
+  var timer = app.querySelector('[data-timer]');
+  var steps = app.querySelectorAll('[data-step]');
+  var secs = app.querySelectorAll('.k-secs > div');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timers = [];
+  var visible = true;
+
+  function show(name) {
+    Object.keys(scenes).forEach(function (k) { scenes[k].classList.toggle('is-on', k === name); });
+  }
+  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function clearAll() { timers.forEach(clearTimeout); timers = []; }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  function finalState() {
+    show('doc');
+    secs.forEach(function (s) { s.classList.add('is-in'); });
+  }
+
+  function run() {
+    clearAll();
+    // 1 · Pantalla de grabar, sin consentimiento
+    show('rec');
+    recScene.classList.remove('is-ready', 'is-recording');
+    recText.textContent = 'Marca el consentimiento para grabar';
+    timer.textContent = '00:00';
+    scenes.proc.classList.remove('is-processing');
+    steps.forEach(function (s) { s.classList.remove('is-done'); });
+    secs.forEach(function (s) { s.classList.remove('is-in'); });
+
+    later(function () { recScene.classList.add('is-ready'); recText.textContent = 'Listo para grabar'; }, 1200);
+    later(function () { recScene.classList.add('is-recording'); recText.textContent = 'Grabando la consulta'; }, 2200);
+    // El reloj corre rápido: unos minutos de consulta en pocos segundos
+    var t = 0;
+    for (var i = 1; i <= 24; i++) {
+      (function (i) {
+        later(function () { t = i * 23; timer.textContent = pad(Math.floor(t / 60)) + ':' + pad(t % 60); }, 2200 + i * 160);
+      })(i);
+    }
+    // 2 · Procesar
+    later(function () { show('proc'); }, 6600);
+    later(function () { scenes.proc.classList.add('is-processing'); steps[0].classList.add('is-done'); }, 6800);
+    later(function () { steps[1].classList.add('is-done'); }, 7700);
+    later(function () { steps[2].classList.add('is-done'); }, 8600);
+    // 3 · Historia
+    later(function () { show('doc'); }, 9600);
+    secs.forEach(function (s, i) { later(function () { s.classList.add('is-in'); }, 10000 + i * 600); });
+    later(function () { if (visible) run(); }, 15500);
+  }
+
+  if (reduce) { finalState(); return; }
+
+  if ('IntersectionObserver' in window) {
+    var started = false;
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        visible = e.isIntersecting;
+        if (visible && !started) { started = true; run(); }
+        else if (visible && timers.length === 0) { run(); }
+        else if (!visible) { clearAll(); started = false; }
+      });
+    }, { threshold: 0.25 }).observe(app);
+  } else {
+    run();
+  }
+})();
+</script>
+</body>
+</html>

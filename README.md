@@ -1,21 +1,24 @@
 # Kos · Landing
 
-Página de inicio de Kos (kos-ia.com). Es independiente de la plataforma: la plataforma vive en su propio repositorio y en un subdominio aparte.
+Landing page for Kos (kos-ia.com). It is independent from the platform: the platform lives in its own repository and on a separate subdomain.
 
-## Archivos
+The page copy is in Spanish (it is written for Spanish-speaking doctors). Code, comments, commits and docs in this repository are in English.
 
-- `index.html`: la página.
-- `kos-landing.css`: todos los estilos. Los colores salen de la plataforma Kos (paleta cobalto profundo); se cambian solo en `:root`.
-- `assets/`: logo e ícono.
+## Files
 
-## Verla en el computador
+- `index.html`: the page, including the hero animation script.
+- `kos-landing.css`: all styles. Colors come from the Kos platform (deep cobalt palette) and are changed only in `:root`.
+- `assets/`: logo and icon.
+- `serve.mjs`: tiny local server for previewing.
+
+## Preview locally
 
 ```bash
-node servir.mjs
+node serve.mjs
 ```
 
-y abrir http://localhost:8795
+Then open http://localhost:8795
 
-## Pendiente antes de publicar
+## Before publishing
 
-Los textos marcados `[DATO: …]` en la página: precios y cupos Founders, testimonios reales y qué pasa con el audio. Los enlaces a la plataforma apuntan a dev.med-kos.com hasta que se defina el subdominio final.
+Fill in the texts marked `[DATO: …]` on the page: Founders pricing and seats, real testimonials, and what happens to the audio. Links to the platform point to dev.med-kos.com until the final subdomain is set.

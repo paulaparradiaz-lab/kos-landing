@@ -1,18 +1,17 @@
 /*
-  Kos · CSS de la landing
-  Sale de landing/index.html (26-oct-2026). Tokens copiados de la plataforma Kos
-  (medical-frontend-web-develop/src/app/globals.css): paleta C, cobalto profundo.
+  Kos · landing styles
+  Tokens copied from the Kos platform (src/app/globals.css): palette C, deep cobalt.
 
-  Para usarlo:
-  1. En el <head> de tu HTML:
+  Usage:
+  1. In the HTML <head>:
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
      <link rel="stylesheet" href="kos-landing.css">
-  2. Todas las clases empiezan por .k- para no chocar con otras.
-  3. Colores solo con las variables de :root (claro) y sus versiones oscuras.
-     Marca: --brand (cobalto #1E3A8A) para botones y franjas. --accent (#1078F8, el azul del logo)
-     solo para detalles pequeños (la onda), nunca para texto ni botones.
-  4. Letra: Poppins (400, 500, 600).
+  2. Every class starts with .k- so it doesn't clash with anything else.
+  3. Colors only through the :root variables (light) and their dark versions.
+     Brand: --brand (cobalt #1E3A8A) for buttons and bands. --accent (#1078F8, the logo blue)
+     only for small details (the waveform), never for text or buttons.
+  4. Font: Poppins (400, 500, 600).
 */
 
 :root {
@@ -79,7 +78,7 @@
   --gutter: 16px;
 }
 
-/* Modo oscuro grafito, igual que la plataforma */
+/* Graphite dark mode, same as the platform */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #1b1c21; --page: #111215; --surface: #24262c; --hover: #31343c;
@@ -131,7 +130,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
 .k-ico { flex: none; }
 
-/* Botones de la plataforma (alto 44, radio 8) */
+/* Platform buttons (44px tall, 8px radius) */
 .k-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-height: 44px; padding: 0 20px; border-radius: var(--r-control);
@@ -153,7 +152,7 @@ ul, ol { padding: 0; list-style: none; }
 }
 .k-link:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 
-/* Encabezado */
+/* Header */
 .k-head { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--border); }
 .k-head__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
 .k-logo { display: inline-flex; align-items: center; min-height: 44px; }
@@ -163,7 +162,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-nav { display: none; gap: 8px; }
 .k-head__actions { display: flex; align-items: center; gap: 8px; }
 
-/* Títulos de sección */
+/* Section headings */
 .k-sec { padding: 72px 0; }
 .k-sec--page { background: var(--page); }
 .k-sec__head { max-width: 44em; margin-bottom: 40px; }
@@ -173,12 +172,12 @@ ul, ol { padding: 0; list-style: none; }
 .k-sec__lede { margin-top: 14px; font-size: var(--text-lede); color: var(--ink-2); }
 .k-cite { margin-top: 24px; font-size: var(--text-micro); color: var(--ink-4); max-width: 60em; }
 .k-cite a { color: var(--ink-3); }
-.k-dato {
+.k-placeholder {
   font-size: var(--text-small); padding: 2px 8px; border-radius: 6px;
   background: var(--warn-soft); color: var(--warn-ink); border: 1px dashed var(--warn-border);
 }
 
-/* 1 · Portada */
+/* 1 · Hero */
 .k-hero { background: var(--page); padding: 48px 0 64px; overflow: hidden; }
 .k-hero__grid { display: grid; gap: 40px; align-items: center; }
 .k-pill {
@@ -195,7 +194,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-facts b { display: block; font-size: var(--text-body); font-weight: 600; color: var(--ink); line-height: 1.3; }
 .k-facts span { display: block; margin-top: 2px; font-size: var(--text-micro); color: var(--ink-3); line-height: 1.4; }
 
-/* La animación: una ventana de Kos con el flujo real */
+/* The animation: a Kos window showing the real flow */
 .k-app {
   position: relative; display: grid; grid-template-columns: 44px 1fr;
   background: var(--page); border: 1px solid var(--border); border-radius: var(--r-big);
@@ -216,7 +215,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-scene.is-on { opacity: 1; visibility: visible; }
 .k-panel { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-card); padding: 16px; height: 100%; display: flex; flex-direction: column; gap: 14px; overflow: hidden; }
 
-/* Escena 1 · grabar */
+/* Scene 1 · record */
 .k-recbox { background: var(--rec-soft); border-radius: var(--r-card); padding: 18px 12px; display: grid; justify-items: center; gap: 8px; text-align: center; }
 .k-mic { width: 44px; height: 44px; border-radius: 50%; background: var(--rec); color: var(--on-rec); display: grid; place-items: center; opacity: .55; transition: opacity .3s; }
 .k-recbox p { font-size: var(--text-micro); color: var(--rec-ink); min-height: 1.4em; }
@@ -240,7 +239,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-stop { margin-top: auto; align-self: flex-start; display: none; align-items: center; gap: 8px; padding: 8px 14px; border-radius: var(--r-control); background: var(--brand); color: var(--on-brand); font-size: var(--text-micro); font-weight: 500; }
 .is-recording .k-stop { display: inline-flex; }
 
-/* Escena 2 · procesar */
+/* Scene 2 · process */
 .k-proc { justify-content: center; align-items: stretch; text-align: left; }
 .k-proc h4 { margin: 0; font-size: var(--text-ui); font-weight: 600; }
 .k-proc p { font-size: var(--text-micro); color: var(--ink-3); }
@@ -253,7 +252,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-steps-mini li.is-done { color: var(--ink); }
 .k-steps-mini li.is-done::before { background: var(--busy); }
 
-/* Escena 3 · historia */
+/* Scene 3 · clinical record */
 .k-doc__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
 .k-doc__head b { display: block; font-size: var(--text-ui); font-weight: 600; line-height: 1.3; }
 .k-doc__head small { font-size: var(--text-tiny); color: var(--ink-3); }
@@ -267,7 +266,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-secs p { font-size: var(--text-micro); color: var(--ink-2); line-height: 1.5; }
 .k-app__caption { margin-top: 12px; font-size: var(--text-micro); color: var(--ink-4); }
 
-/* 2 · Por dentro */
+/* 2 · Inside Kos */
 .k-inside { display: grid; gap: 40px; align-items: start; }
 .k-feats { display: grid; gap: 4px; }
 .k-feat { display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
@@ -300,7 +299,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-lib__sec dl { margin: 6px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: var(--text-micro); }
 .k-lib__sec dt { color: var(--ink-3); } .k-lib__sec dd { margin: 0; color: var(--ink); }
 
-/* 3 · Para quién */
+/* 3 · Who it is for */
 .k-who { display: grid; gap: 12px; }
 .k-who__card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-card); padding: 20px; }
 .k-who__card h3 { display: flex; align-items: center; gap: 10px; font-size: var(--text-body); font-weight: 600; }
@@ -314,14 +313,14 @@ ul, ol { padding: 0; list-style: none; }
 .k-founders-strip b { font-weight: 600; }
 .k-founders-strip a { color: var(--on-brand); font-size: var(--text-ui); font-weight: 500; min-height: 44px; display: inline-flex; align-items: center; }
 
-/* 4 · ¿Te suena? */
+/* 4 · Pain points */
 .k-pains { display: grid; gap: 12px; }
 .k-pain { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-card); padding: 20px; }
 .k-pain h3 { font-size: var(--text-body); font-weight: 600; line-height: 1.4; }
 .k-pain p { margin-top: 8px; font-size: var(--text-ui); color: var(--ink-2); }
 .k-pain p strong { color: var(--brand-ink); font-weight: 600; }
 
-/* 5 · Sin Kos vs con Kos */
+/* 5 · Without Kos vs. with Kos */
 .k-vs { display: grid; gap: 12px; }
 .k-vs__col { border-radius: var(--r-card); padding: 22px; border: 1px solid var(--border); background: var(--bg); }
 .k-vs__col--kos { background: var(--brand-soft); border-color: var(--brand-line); }
@@ -332,7 +331,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-vs__col li .k-ico { margin-top: 3px; color: var(--ink-4); }
 .k-vs__col--kos li .k-ico { color: var(--brand-ink); }
 
-/* 6 · Datos */
+/* 6 · Data */
 .k-data { display: grid; gap: 12px; }
 .k-datum { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-card); padding: 22px; display: flex; flex-direction: column; gap: 8px; }
 .k-datum b { font-size: 34px; line-height: 1.05; font-weight: 600; letter-spacing: -.02em; color: var(--brand-ink); font-variant-numeric: tabular-nums; }
@@ -352,7 +351,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-quote p { font-size: 22px; line-height: 1.3; font-weight: 600; letter-spacing: -.01em; }
 .k-quote footer { margin-top: 8px; font-size: var(--text-small); color: var(--ink-3); }
 
-/* Privacidad y consentimiento */
+/* Privacy and consent */
 .k-priv { display: grid; gap: 32px; }
 .k-priv__rows { border-top: 1px solid var(--border); }
 .k-priv__row { display: grid; gap: 4px; padding: 16px 0; border-bottom: 1px solid var(--border); }
@@ -364,7 +363,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-consent--spaced { margin-top: 24px; }
 .k-consent small { font-size: var(--text-micro); color: var(--ink-3); }
 
-/* 7 · Testimonios */
+/* 7 · Testimonials */
 .k-testis { display: grid; gap: 12px; }
 .k-testi { background: var(--bg); border: 1px dashed var(--warn-border); border-radius: var(--r-card); padding: 22px; display: flex; flex-direction: column; gap: 14px; }
 .k-testi__who { display: flex; align-items: center; gap: 12px; }
@@ -393,7 +392,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-plans__note { margin-top: 16px; font-size: var(--text-small); color: var(--ink-3); }
 .k-plans__note a { color: var(--brand-ink); font-weight: 500; }
 
-/* 9 · Preguntas */
+/* 9 · FAQ */
 .k-faq { display: grid; gap: 32px; }
 .k-faq__list { border-top: 1px solid var(--border); }
 .k-faq details { border-bottom: 1px solid var(--border); }
@@ -406,7 +405,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-faq details[open] summary .k-ico { transform: rotate(180deg); }
 .k-faq details p { padding: 0 0 18px; font-size: var(--text-ui); color: var(--ink-2); max-width: 44em; }
 
-/* 10 · Cierre */
+/* 10 · Closing */
 .k-final { background: var(--band); color: var(--band-ink); padding: 80px 0; }
 .k-final .k-h2 { color: var(--band-ink-strong); font-size: var(--text-h1); line-height: 1.1; max-width: 16em; }
 .k-final .k-h2 span { display: block; color: var(--band-ink-dim); }
@@ -415,7 +414,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-final small { display: block; margin-top: 16px; font-size: var(--text-small); color: var(--band-ink-dim); }
 .k-final__name { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--band-line); font-size: var(--text-ui); max-width: 44em; }
 
-/* Pie */
+/* Footer */
 .k-foot { background: var(--bg); border-top: 1px solid var(--border); padding: 28px 0 36px; font-size: var(--text-small); color: var(--ink-3); }
 .k-foot__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
 .k-foot ul { display: flex; flex-wrap: wrap; gap: 4px 20px; }

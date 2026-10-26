@@ -1,4 +1,4 @@
-// Sirve la landing en http://localhost:8795 para verla en el navegador: node servir.mjs
+// Serves the landing at http://localhost:8795 to preview it in the browser: node serve.mjs
 import http from "node:http";
 import { readFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
@@ -14,5 +14,5 @@ http.createServer(async (req, res) => {
   try {
     const body = await readFile(file);
     res.writeHead(200, { "Content-Type": types[extname(file)] || "application/octet-stream", "Cache-Control": "no-store" }).end(body);
-  } catch { res.writeHead(404).end("No encontrado"); }
-}).listen(8795, () => console.log("Landing en http://localhost:8795"));
+  } catch { res.writeHead(404).end("Not found"); }
+}).listen(8795, () => console.log("Landing at http://localhost:8795"));

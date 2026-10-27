@@ -19,6 +19,10 @@ node serve.mjs
 
 Then open http://localhost:8795
 
+## Preview online
+
+GitHub Pages publishes `main` at https://paulaparradiaz-lab.github.io/kos-landing/ and updates it on every push. The page carries `<meta name="robots" content="noindex, nofollow">` so search engines skip it while it is a preview; remove that line at launch.
+
 ## Before publishing
 
 Fill in the texts marked `[DATO: …]` on the page: Founders pricing and seats, real testimonials, and what happens to the audio. Confirm with Jhoan that a normal consultation becomes a clinical record in 2 minutes or less: the hero promises it. Links to the platform point to dev.med-kos.com until the final subdomain is set.

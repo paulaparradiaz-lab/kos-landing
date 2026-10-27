@@ -466,12 +466,28 @@ ul, ol { padding: 0; list-style: none; }
 .k-founders-strip b { font-weight: 600; }
 .k-founders-strip a { color: var(--on-brand); font-size: var(--text-ui); font-weight: 500; min-height: 44px; display: inline-flex; align-items: center; }
 
-/* 4 · Pain points */
-.k-pains { display: grid; gap: 12px; }
-.k-pain { background: var(--bg); border: 1px solid var(--border); border-radius: var(--r-card); padding: 20px; }
-.k-pain h3 { font-size: var(--text-body); font-weight: 600; line-height: 1.4; }
-.k-pain p { margin-top: 8px; font-size: var(--text-ui); color: var(--ink-2); }
-.k-pain p strong { color: var(--brand-ink); font-weight: 600; }
+/* 1c · The problem: the doctor's side and the patient's, face to face.
+   On desktop both panels share the same rows, so their parts line up. */
+.k-problem__title { font-size: var(--text-h1); line-height: 1.1; }
+.k-problem__title span { display: block; color: var(--ink-3); font-weight: 500; }
+.k-voices { display: grid; gap: 12px; }
+.k-voices__side { display: grid; align-content: start; padding: 24px; border-radius: var(--r-big); border: 1px solid var(--border); background: var(--bg); }
+.k-voices__side--pat { background: var(--band); border-color: var(--band); color: var(--band-ink); }
+.k-voices__label { font-size: var(--text-small); font-weight: 600; color: var(--ink-3); padding-bottom: 16px; }
+.k-voices__side--pat .k-voices__label { color: var(--band-ink-dim); }
+.k-voices__quote { font-size: 24px; line-height: 1.28; font-weight: 600; letter-spacing: -.015em; color: var(--ink); text-wrap: balance; }
+.k-voices__side--pat .k-voices__quote { color: var(--band-ink-strong); }
+.k-voices__src { margin-top: 10px; font-size: var(--text-micro); line-height: 1.5; color: var(--ink-3); }
+.k-voices__side--pat .k-voices__src { color: var(--band-ink-dim); }
+.k-voices__rest { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-strong); }
+.k-voices__side--pat .k-voices__rest { border-top-color: var(--band-line); }
+.k-voices__list li { padding: 12px 0; border-bottom: 1px solid var(--border); font-size: var(--text-body); line-height: 1.45; font-weight: 500; color: var(--ink-2); }
+.k-voices__list li:first-child { padding-top: 0; }
+.k-voices__list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.k-voices__num { display: block; font-size: 64px; line-height: 1; font-weight: 600; letter-spacing: -.03em; color: var(--band-ink-strong); }
+.k-voices__fig { margin-top: 10px; font-size: var(--text-lede); line-height: 1.4; font-weight: 500; color: var(--band-ink-strong); max-width: 22em; }
+.k-problem__answer { margin-top: 28px; font-size: 20px; line-height: 1.45; color: var(--ink-2); max-width: 40em; }
+.k-problem__answer strong { color: var(--brand-ink); font-weight: 600; }
 
 /* 5 · Without Kos vs. with Kos */
 .k-vs { display: grid; gap: 12px; }
@@ -576,7 +592,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-foot a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 
 @media (min-width: 640px) {
-  .k-who, .k-pains, .k-testis { grid-template-columns: 1fr 1fr; }
+  .k-who, .k-testis { grid-template-columns: 1fr 1fr; }
   .k-data { grid-template-columns: 1fr 1fr; }
   .k-datum--big { grid-column: 1 / -1; }
 }
@@ -589,7 +605,11 @@ ul, ol { padding: 0; list-style: none; }
   .k-lib { grid-template-columns: 210px 1fr; }
   .k-lib__list { display: block; }
   .k-who { grid-template-columns: repeat(4, 1fr); }
-  .k-pains { grid-template-columns: repeat(3, 1fr); }
+  .k-voices { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .k-voices__side { grid-row: span 3; grid-template-rows: subgrid; padding: 32px; }
+  .k-voices__quote { font-size: 28px; }
+  .k-voices__num { font-size: 80px; }
+  .k-problem__answer { font-size: 22px; }
   .k-vs { grid-template-columns: 1fr 1fr; }
   .k-data { grid-template-columns: repeat(3, 1fr); }
   .k-datum--big { grid-column: span 2; grid-row: span 2; }

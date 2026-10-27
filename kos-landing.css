@@ -374,6 +374,39 @@ ul, ol { padding: 0; list-style: none; }
   .ka-progress i::after, .ka-band--rec span i, .is-listening .k-talk__state i { animation: none; }
 }
 
+/* 1b · Shortcut band: the shortcuts that ship with Kos, sliding past. Pauses on hover or focus. */
+.k-sc__track { overflow: hidden; }
+.k-sc__rail { display: flex; width: max-content; animation: k-sc-slide 110s linear infinite; }
+.k-sc__track:hover .k-sc__rail,
+.k-sc__track:focus-within .k-sc__rail { animation-play-state: paused; }
+.k-sc__list { display: flex; flex-shrink: 0; margin: 0; padding: 0; list-style: none; }
+.k-sc__list li { display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: var(--text-ui); }
+.k-sc__code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-weight: 600; }
+@keyframes k-sc-slide { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .k-sc__rail { animation: none; }
+  .k-sc__track { overflow-x: auto; }
+  .k-sc__list[aria-hidden="true"] { display: none; }
+}
+
+.k-sc--a { background: var(--band); color: var(--band-ink); }
+.k-sc--a .k-sc__in { display: flex; align-items: center; }
+.k-sc--a .k-sc__label { flex-shrink: 0; margin: 0; padding: 18px 20px 18px var(--gutter); border-right: 1px solid var(--band-line); font-size: var(--text-ui); font-weight: 600; color: var(--band-ink-strong); white-space: nowrap; }
+.k-sc--a .k-sc__track { flex: 1; min-width: 0; }
+.k-sc--a .k-sc__track:focus-visible { outline: 2px solid var(--band-ink-strong); outline-offset: -4px; }
+.k-sc--a .k-sc__list li { padding: 18px 28px; }
+.k-sc--a .k-sc__code { color: var(--band-ink-strong); font-size: var(--text-ui); }
+.k-sc--a .k-sc__list span { color: var(--band-ink-dim); }
+@media (max-width: 599px) {
+  .k-sc--a .k-sc__in { flex-direction: column; align-items: stretch; }
+  .k-sc--a .k-sc__label { padding: 14px var(--gutter) 0; border-right: 0; }
+  .k-sc--a .k-sc__list li { padding: 10px 28px 16px 0; }
+  .k-sc--a .k-sc__list li:first-child { padding-left: var(--gutter); }
+}
+@media (min-width: 900px) {
+  .k-sc--a .k-sc__label { padding-left: max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter))); }
+}
+
 /* The consent checkbox, also used in the privacy section */
 .k-check { display: flex; gap: 10px; font-size: var(--text-micro); color: var(--ink-2); line-height: 1.45; }
 .k-box { flex: none; width: 16px; height: 16px; margin-top: 1px; border-radius: 4px; border: 1.5px solid var(--brand); display: grid; place-items: center; color: transparent; }

@@ -25,4 +25,4 @@ GitHub Pages publishes `main` at https://paulaparradiaz-lab.github.io/kos-landin
 
 ## Before publishing
 
-Fill in the texts marked `[DATO: …]` on the page: Founders pricing and seats, real testimonials, and what happens to the audio. Confirm with Jhoan that a normal consultation becomes a clinical record in 2 minutes or less: the hero promises it. Links to the platform point to dev.med-kos.com until the final subdomain is set.
+Fill in the texts marked `[DATO: …]` on the page: Founders pricing and seats, real testimonials, and what happens to the audio. Confirm with Jhoan that a normal consultation becomes a clinical record in 2 minutes or less: the hero promises it. Also confirm that recordings and records are encrypted in transit and at rest (the hero says "Todo cifrado") and that the plans really have no monthly cap ("Historias ilimitadas"). Links to the platform point to dev.med-kos.com until the final subdomain is set.

@@ -497,6 +497,7 @@ ul, ol { padding: 0; list-style: none; }
 .k-plan li .k-ico { margin-top: 3px; color: var(--ok-ink); }
 .k-plan li em { margin-left: auto; font-style: normal; font-size: var(--text-tiny); padding: 2px 8px; border-radius: 999px; background: var(--brand-soft); color: var(--brand-ink); white-space: nowrap; align-self: center; }
 .k-plan .k-btn { margin-top: auto; }
+.k-plan__fine { margin-top: -6px; text-align: center; font-size: var(--text-tiny); color: var(--ink-4); }
 .k-plans__note { margin-top: 16px; font-size: var(--text-small); color: var(--ink-3); }
 .k-plans__note a { color: var(--brand-ink); font-weight: 500; }
 
@@ -549,6 +550,7 @@ ul, ol { padding: 0; list-style: none; }
   .k-datum--big { grid-column: span 2; grid-row: span 2; }
   .k-testis { grid-template-columns: repeat(3, 1fr); }
   .k-plans { grid-template-columns: 1fr 1.2fr; max-width: 900px; }
+  .k-plans--one { grid-template-columns: 1fr; max-width: 520px; }
   .k-faq { grid-template-columns: 1fr 2fr; gap: 56px; }
   .k-priv { grid-template-columns: 1fr 1fr; gap: 56px; }
   .k-priv__row { grid-template-columns: 200px 1fr; gap: 24px; }

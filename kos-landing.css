@@ -560,6 +560,45 @@ ul, ol { padding: 0; list-style: none; }
 .k-plan .k-btn { margin-top: auto; }
 .k-plan__fine { margin-top: -6px; text-align: center; font-size: var(--text-tiny); color: var(--ink-4); }
 .k-plans__note { margin-top: 16px; font-size: var(--text-small); color: var(--ink-3); }
+
+/* Pricing, Clinical Hub layout: deadline strip, Founders card next to the regular one */
+.k-sec__lede b { color: var(--ink); font-weight: 600; }
+.k-deadline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-bottom: 20px; padding: 18px 22px; border-radius: var(--r-big); background: var(--bg); border: 1px solid var(--brand-line); }
+.k-deadline__t { font-size: var(--text-ui); font-weight: 600; color: var(--ink); }
+.k-deadline__s { margin-top: 4px; font-size: var(--text-small); color: var(--ink-3); }
+.k-deadline__s b { color: var(--ink); font-weight: 600; }
+.k-count { display: inline-flex; align-items: center; gap: 6px; }
+.k-count > span { display: grid; justify-items: center; min-width: 52px; padding: 6px 4px 5px; border-radius: var(--r-control); background: var(--brand-soft); border: 1px solid var(--brand-line); }
+.k-count b { font-size: 22px; line-height: 1.05; font-weight: 600; color: var(--brand-ink); font-variant-numeric: tabular-nums; }
+.k-count i { font-style: normal; font-size: var(--text-tiny); color: var(--ink-3); }
+.k-plans--duo .k-plan { padding: 0; gap: 0; overflow: hidden; }
+.k-plan__banner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 12px; padding: 12px 24px; background: var(--brand); color: var(--on-brand); font-size: var(--text-small); }
+.k-plan__banner b { font-weight: 600; }
+.k-plan__banner span { opacity: .85; }
+.k-plan__body { display: flex; flex-direction: column; gap: 12px; padding: 24px; flex: 1; }
+.k-plan__label { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.k-plan__label h3 { font-size: var(--text-ui); font-weight: 600; color: var(--brand-ink); }
+.k-plan__off { font-size: var(--text-micro); font-weight: 600; padding: 3px 9px; border-radius: 999px; background: var(--ok-soft); color: var(--ok-ink); }
+.k-plan__kicker { font-size: var(--text-small); font-weight: 600; color: var(--ink-3); }
+.k-plans--duo .k-price { gap: 4px 8px; }
+.k-plans--duo .k-price b { font-size: 44px; letter-spacing: -.03em; line-height: 1; }
+.k-plans--duo .k-price .k-price__cur { font-size: var(--text-ui); font-weight: 500; color: var(--ink-3); }
+.k-plans--duo .k-price s { margin-left: 4px; font-size: var(--text-body); }
+.k-price__per { margin-top: -6px; font-size: var(--text-small); color: var(--ink-3); }
+.k-plan__save { font-size: var(--text-small); font-weight: 600; color: var(--ok-ink); }
+.k-plan__fx { margin-top: -6px; font-size: var(--text-small); color: var(--ink-3); }
+.k-plan__body > .k-count { margin: 4px 0; }
+.k-plan__desc { font-size: var(--text-ui); color: var(--ink-2); }
+.k-plan__desc--dim { margin-top: -4px; color: var(--ink-3); font-size: var(--text-small); }
+.k-plans--duo ul { margin: 4px 0 8px; padding-top: 16px; border-top: 1px solid var(--border); }
+.k-plan li.k-plan__only { color: var(--ink); font-weight: 600; }
+.k-plan li.k-plan__no { color: var(--ink-4); }
+.k-plan li.k-plan__no .k-ico { color: var(--ink-4); }
+.k-plan--regular { background: var(--surface); box-shadow: none; }
+.k-plan--regular .k-price b { color: var(--ink-3); }
+.k-btn--off { background: transparent; color: var(--ink-4); border-color: var(--border-strong); cursor: default; }
+.k-btn--off:hover { background: transparent; }
+.k-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .k-plans__note a { color: var(--brand-ink); font-weight: 500; }
 
 /* 9 · FAQ */
@@ -616,6 +655,7 @@ ul, ol { padding: 0; list-style: none; }
   .k-testis { grid-template-columns: repeat(3, 1fr); }
   .k-plans { grid-template-columns: 1fr 1.2fr; max-width: 900px; }
   .k-plans--one { grid-template-columns: 1fr; max-width: 520px; }
+  .k-plans--duo { grid-template-columns: 1.1fr 1fr; max-width: none; }
   .k-faq { grid-template-columns: 1fr 2fr; gap: 56px; }
   .k-priv { grid-template-columns: 1fr 1fr; gap: 56px; }
   .k-priv__row { grid-template-columns: 200px 1fr; gap: 24px; }

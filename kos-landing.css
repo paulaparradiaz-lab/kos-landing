@@ -208,7 +208,8 @@ ul, ol { padding: 0; list-style: none; }
 .is-listening .k-talk__state { color: var(--rec-ink); }
 .is-listening .k-talk__state i { background: var(--rec); animation: ka-blink 1.4s ease-in-out infinite; }
 /* Fixed height: new lines come in at the bottom and the older ones move up and fade */
-.k-talk__box { position: relative; height: 172px; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent, var(--ink) 26px); mask-image: linear-gradient(to bottom, transparent, var(--ink) 26px); }
+/* Four lines tall: keeps the animation about the height of the hero text */
+.k-talk__box { position: relative; height: 112px; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, transparent, var(--ink) 26px); mask-image: linear-gradient(to bottom, transparent, var(--ink) 26px); }
 .k-lines { display: grid; gap: 1px; padding: 22px 0 6px; transition: transform .45s cubic-bezier(.4, 0, .2, 1); }
 .k-line { display: none; grid-template-columns: 58px 1fr; gap: 8px; margin: 0 -6px; padding: 3px 6px; border-radius: 6px; font-size: var(--text-micro); line-height: 1.45; transition: background-color .3s; }
 .k-line.is-said { display: grid; animation: ka-in .35s ease-out; }
@@ -222,7 +223,7 @@ ul, ol { padding: 0; list-style: none; }
 
 /* The Kos window */
 .ka-win {
-  position: relative; display: grid; grid-template-columns: 46px 1fr; height: 390px;
+  position: relative; display: grid; grid-template-columns: 46px 1fr; height: 360px;
   background: var(--page); border: 1px solid var(--border); border-radius: var(--r-big);
   box-shadow: var(--shadow-app); overflow: hidden;
 }

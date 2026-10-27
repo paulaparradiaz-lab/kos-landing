@@ -21,4 +21,4 @@ Then open http://localhost:8795
 
 ## Before publishing
 
-Fill in the texts marked `[DATO: …]` on the page: Founders pricing and seats, real testimonials, and what happens to the audio. Links to the platform point to dev.med-kos.com until the final subdomain is set.
+Fill in the texts marked `[DATO: …]` on the page: Founders pricing and seats, real testimonials, and what happens to the audio. Confirm with Jhoan that a normal consultation becomes a clinical record in 2 minutes or less: the hero promises it. Links to the platform point to dev.med-kos.com until the final subdomain is set.

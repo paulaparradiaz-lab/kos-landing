@@ -632,7 +632,7 @@
     ctx.setTransform(d, 0, 0, d, 0, 0);
     ctx.clearRect(0, 0, w, h);
     amp += (Math.sqrt(level(t)) - amp) * 0.16;
-    phase += 0.13 + amp * 0.2;
+    phase += 0.07 + amp * 0.1;   // sideways speed: about half of before, the size still jumps
     ctx.strokeStyle = getComputedStyle(canvas).color;
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';

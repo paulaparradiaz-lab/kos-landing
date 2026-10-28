@@ -429,67 +429,94 @@
     <div class="k-wrap">
       <div class="k-sec__head">
         <span class="k-kicker">Precios</span>
-        <h2 class="k-h2" id="t-founders">Un solo plan. <span>Dos precios, por ahora.</span></h2>
+        <h2 class="k-h2" id="t-founders">Elige según cuántas historias haces. <span>El precio Founders se queda contigo.</span></h2>
         <p class="k-sec__lede">Entra antes del <b>30 de noviembre</b> y conservas el precio Founders mientras sigas activo. Los primeros <span class="k-placeholder">[DATO: número de cupos]</span> médicos pagan 45&nbsp;% menos, y ese precio se queda contigo.</p>
       </div>
 
       <div class="k-deadline">
         <div>
           <p class="k-deadline__t">Precio Founders, habilitado hasta el 30 de noviembre</p>
-          <p class="k-deadline__s">Después sube a <b><span class="k-placeholder">[DATO: precio regular]</span>/mes</b>. Si entras ahora, no vuelve a subir para ti.</p>
+          <p class="k-deadline__s">Después el precio sube. Si entras ahora, no vuelve a subir para ti.</p>
         </div>
         <span class="k-count" data-countdown aria-hidden="true"><span><b data-cd="d">00</b><i>días</i></span><span><b data-cd="h">00</b><i>horas</i></span><span><b data-cd="m">00</b><i>min</i></span><span><b data-cd="s">00</b><i>seg</i></span></span>
       </div>
 
-      <div class="k-plans k-plans--duo">
-        <div class="k-plan k-plan--founders">
-          <div class="k-plan__banner"><b>Precio de lanzamiento</b><span>Hasta el 30 de noviembre</span></div>
+      <div class="k-region">
+        <label for="k-country">Precios para</label>
+        <span class="k-region__box">
+        <select id="k-country" class="k-region__sel">
+          <option value="CO">Colombia</option>
+          <option value="MX">México</option>
+          <option value="ES">España</option>
+          <option value="PE">Perú</option>
+          <option value="CL">Chile</option>
+          <option value="BR">Brasil</option>
+          <option value="AR">Argentina</option>
+          <option value="US">Estados Unidos</option>
+          <option value="CR">Costa Rica</option>
+          <option value="EC">Ecuador</option>
+          <option value="XX" selected>Otro país</option>
+        </select>
+        </span>
+        <span class="k-region__hint" data-region-hint>Precios en USD.</span>
+      </div>
+
+      <div class="k-plans k-plans--tri" data-plans>
+        <div class="k-plan">
           <div class="k-plan__body">
-            <div class="k-plan__label"><h3>Membresía Founders</h3><span class="k-plan__off">45&nbsp;% OFF</span></div>
+            <h3 class="k-plan__kicker">Básico</h3>
+            <p class="k-plan__qty"><b>250</b> historias al mes</p>
             <div class="k-price">
-              <b><span class="k-placeholder">[DATO: precio Founders]</span></b><span class="k-price__cur"><span class="k-placeholder">[DATO: moneda]</span></span><s><span class="k-placeholder">[DATO: precio regular]</span></s>
+              <b data-price="basico">18,52</b><span class="k-price__cur" data-cur>USD</span>
             </div>
-            <p class="k-price__per">/ mes</p>
-            <p class="k-plan__save">Ahorras 45&nbsp;% cada mes · descuento permanente</p>
-            <p class="k-plan__fx">Al pagar, Hotmart te muestra el valor en la moneda de tu país.</p>
-            <span class="k-count" data-countdown aria-hidden="true"><span><b data-cd="d">00</b><i>días</i></span><span><b data-cd="h">00</b><i>horas</i></span><span><b data-cd="m">00</b><i>min</i></span><span><b data-cd="s">00</b><i>seg</i></span></span>
-            <p class="k-plan__desc">Para los primeros médicos que confían en el proyecto. El descuento se queda contigo mientras sigas activo.</p>
-            <ul>
-              <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Historias clínicas ilimitadas</li>
-              <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Tus plantillas</li>
-              <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Computador, Android e iPhone</li>
-              <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Copiar y descargar en Word</li>
-              <li class="k-plan__only"><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Línea directa con el equipo por WhatsApp <em>Solo Founders</em></li>
-              <li class="k-plan__only"><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Voto en el próximo tipo de nota <em>Solo Founders</em></li>
-              <li class="k-plan__only"><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Precio bloqueado de por vida <em>Solo Founders</em></li>
-            </ul>
-            <a class="k-btn k-btn--big" href="https://dev.med-kos.com/register">Quiero ser Founder</a>
-            <small class="k-plan__fine">Garantía de 7 días.</small>
+            <p class="k-price__per">/ mes · precio Founders</p>
+            <a class="k-btn k-btn--big" data-link="basico" href="https://pay.hotmart.com/K108218165Y?off=5evacyyg">Elegir Básico</a>
           </div>
         </div>
-
-        <div class="k-plan k-plan--regular">
+        <div class="k-plan">
           <div class="k-plan__body">
-            <p class="k-plan__kicker">Precio regular</p>
+            <h3 class="k-plan__kicker">Pro</h3>
+            <p class="k-plan__qty"><b>500</b> historias al mes</p>
             <div class="k-price">
-              <b><span class="k-placeholder">[DATO: precio regular]</span></b><span class="k-price__cur"><span class="k-placeholder">[DATO: moneda]</span></span>
+              <b data-price="pro">34,22</b><span class="k-price__cur" data-cur>USD</span>
             </div>
-            <p class="k-price__per">/ mes · a partir del 1 de diciembre</p>
-            <p class="k-plan__desc k-plan__desc--dim">Disponible cuando cierre el periodo Founders.</p>
-            <p class="k-plan__desc">Acceso completo. Cancela cuando quieras, sin penalidades.</p>
-            <ul>
-              <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Historias clínicas ilimitadas</li>
-              <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Tus plantillas</li>
-              <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Computador, Android e iPhone</li>
-              <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Copiar y descargar en Word</li>
-              <li class="k-plan__no"><span class="k-sr">No incluye: </span><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-x"/></svg>Línea directa con el equipo por WhatsApp</li>
-              <li class="k-plan__no"><span class="k-sr">No incluye: </span><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-x"/></svg>Voto en el próximo tipo de nota</li>
-              <li class="k-plan__no"><span class="k-sr">No incluye: </span><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-x"/></svg>Precio bloqueado de por vida</li>
-            </ul>
-            <span class="k-btn k-btn--big k-btn--off" aria-disabled="true">Próximamente</span>
+            <p class="k-price__per">/ mes · precio Founders</p>
+            <a class="k-btn k-btn--big" data-link="pro" href="https://pay.hotmart.com/K108218165Y?off=xci2dt7g">Elegir Pro</a>
+          </div>
+        </div>
+        <div class="k-plan">
+          <div class="k-plan__body">
+            <h3 class="k-plan__kicker">Premium</h3>
+            <p class="k-plan__qty"><b>1000</b> historias al mes</p>
+            <div class="k-price">
+              <b data-price="premium">62,48</b><span class="k-price__cur" data-cur>USD</span>
+            </div>
+            <p class="k-price__per">/ mes · precio Founders</p>
+            <a class="k-btn k-btn--big" data-link="premium" href="https://pay.hotmart.com/K108218165Y?off=emw0exes">Elegir Premium</a>
           </div>
         </div>
       </div>
+
+      <div class="k-incl">
+        <div>
+          <h3 class="k-incl__t">Todos los planes incluyen</h3>
+          <ul>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Tus plantillas</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Computador, Android e iPhone</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Copiar y descargar en Word</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Cancela cuando quieras, sin penalidades</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="k-incl__t">Si entras como Founder antes del 30 de noviembre</h3>
+          <ul>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Línea directa con el equipo por WhatsApp</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Voto en el próximo tipo de nota</li>
+            <li><svg class="k-ico" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-check"/></svg>Precio bloqueado de por vida</li>
+          </ul>
+        </div>
+      </div>
+      <p class="k-plans__fine">Garantía de 7 días. El pago se hace en Hotmart.</p>
       <p class="k-plans__note">¿Clínica, IPS o grupo de médicos? <a href="https://wa.me/573004067138">Escríbenos por WhatsApp</a> y armamos el acceso para tu equipo.</p>
     </div>
   </section>
@@ -919,6 +946,66 @@
   if (tick()) {
     var timer = setInterval(function () { if (!tick()) clearInterval(timer); }, 1000);
   }
+})();
+
+// Prices by country: the visitor's IP picks the country, the select lets them change it
+(function () {
+  var root = document.querySelector('[data-plans]');
+  var sel = document.getElementById('k-country');
+  if (!root || !sel) return;
+  var H = 'https://pay.hotmart.com/K108218165Y?off=';
+  var USD = { cur: 'USD', basico: ['18,99', 'sxfnswcl'], pro: ['33,99', '86rbtab4'], premium: ['61,99', 'mzl8z3jk'] };
+  var P = {
+    CO: { cur: 'COP', basico: ['59.900', 'msr5k3x4'], pro: ['109.900', 'k8uqpqc3'], premium: ['199.900', 'aviu8bvj'] },
+    MX: { cur: 'MXN', basico: ['429', 'beabtb7t'], pro: ['779', '7m0w8ppp'], premium: ['1.429', 'qab0n72p'] },
+    ES: { cur: 'EUR', basico: ['22,99', 'y5vcxw9f'], pro: ['42,99', 'ls5gotkc'], premium: ['77,99', 'tl3ci050'] },
+    PE: { cur: 'PEN', basico: ['69', 'a4cpkytl'], pro: ['129', 'pr1wuaq5'], premium: ['229', 'i9yo2j9k'] },
+    CL: { cur: 'CLP', basico: ['22.990', 'k18xzpxh'], pro: ['41.990', 'ui14xxjc'], premium: ['76.990', 'ikmtpjmh'] },
+    BR: { cur: 'BRL', basico: ['109', 'quq0kzvc'], pro: ['199', 'hl9mk02o'], premium: ['369', '621jui39'] },
+    AR: USD, US: USD, CR: USD, EC: USD,
+    XX: { cur: 'USD', basico: ['18,52', '5evacyyg'], pro: ['34,22', 'xci2dt7g'], premium: ['62,48', 'emw0exes'] }
+  };
+  var NAMES = { COP: 'pesos colombianos', MXN: 'pesos mexicanos', EUR: 'euros', PEN: 'soles', CLP: 'pesos chilenos', BRL: 'reales', USD: 'dólares (USD)' };
+  var hint = document.querySelector('[data-region-hint]');
+  var KEY = 'kos-country';
+
+  function show(code) {
+    if (!P[code]) code = 'XX';
+    var t = P[code];
+    sel.value = code;
+    ['basico', 'pro', 'premium'].forEach(function (k) {
+      root.querySelector('[data-price="' + k + '"]').textContent = t[k][0];
+      root.querySelector('[data-link="' + k + '"]').href = H + t[k][1];
+    });
+    root.querySelectorAll('[data-cur]').forEach(function (c) { c.textContent = t.cur; });
+    if (hint) hint.textContent = 'Precios en ' + NAMES[t.cur] + '.';
+    root.classList.add('is-ready');
+  }
+
+  function get(url, pick) {
+    var ctl = 'AbortController' in window ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 2500);
+    return fetch(url, ctl ? { signal: ctl.signal } : {})
+      .then(function (r) { if (!r.ok) throw r; return r.json(); })
+      .then(function (d) { clearTimeout(timer); var c = pick(d); if (!c) throw d; return String(c).toUpperCase(); });
+  }
+
+  sel.addEventListener('change', function () {
+    try { localStorage.setItem(KEY, sel.value); } catch (e) {}
+    show(sel.value);
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  if (saved && P[saved]) { show(saved); return; }
+
+  root.classList.add('is-loading');
+  var done = false;
+  function finish(code) { if (done) return; done = true; root.classList.remove('is-loading'); show(code); }
+  setTimeout(function () { finish('XX'); }, 4000);
+  get('https://api.country.is/', function (d) { return d.country; })
+    .catch(function () { return get('https://get.geojs.io/v1/ip/country.json', function (d) { return d.country; }); })
+    .then(finish, function () { finish('XX'); });
 })();
 </script>
 </body>

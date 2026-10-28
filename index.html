@@ -441,25 +441,7 @@
         <span class="k-count" data-countdown aria-hidden="true"><span><b data-cd="d">00</b><i>días</i></span><span><b data-cd="h">00</b><i>horas</i></span><span><b data-cd="m">00</b><i>min</i></span><span><b data-cd="s">00</b><i>seg</i></span></span>
       </div>
 
-      <div class="k-region">
-        <label for="k-country">Precios para</label>
-        <span class="k-region__box">
-        <select id="k-country" class="k-region__sel">
-          <option value="CO">Colombia</option>
-          <option value="MX">México</option>
-          <option value="ES">España</option>
-          <option value="PE">Perú</option>
-          <option value="CL">Chile</option>
-          <option value="BR">Brasil</option>
-          <option value="AR">Argentina</option>
-          <option value="US">Estados Unidos</option>
-          <option value="CR">Costa Rica</option>
-          <option value="EC">Ecuador</option>
-          <option value="XX" selected>Otro país</option>
-        </select>
-        </span>
-        <span class="k-region__hint" data-region-hint>Precios en USD.</span>
-      </div>
+      <p class="k-region" data-region-hint>Precios en dólares (USD).</p>
 
       <div class="k-plans k-plans--tri" data-plans>
         <div class="k-plan">
@@ -948,11 +930,10 @@
   }
 })();
 
-// Prices by country: the visitor's IP picks the country, the select lets them change it
+// Prices by country: the visitor's IP picks the country
 (function () {
   var root = document.querySelector('[data-plans]');
-  var sel = document.getElementById('k-country');
-  if (!root || !sel) return;
+  if (!root) return;
   var H = 'https://pay.hotmart.com/K108218165Y?off=';
   var USD = { cur: 'USD', basico: ['18,99', 'sxfnswcl'], pro: ['33,99', '86rbtab4'], premium: ['61,99', 'mzl8z3jk'] };
   var P = {
@@ -967,12 +948,10 @@
   };
   var NAMES = { COP: 'pesos colombianos', MXN: 'pesos mexicanos', EUR: 'euros', PEN: 'soles', CLP: 'pesos chilenos', BRL: 'reales', USD: 'dólares (USD)' };
   var hint = document.querySelector('[data-region-hint]');
-  var KEY = 'kos-country';
 
   function show(code) {
     if (!P[code]) code = 'XX';
     var t = P[code];
-    sel.value = code;
     ['basico', 'pro', 'premium'].forEach(function (k) {
       root.querySelector('[data-price="' + k + '"]').textContent = t[k][0];
       root.querySelector('[data-link="' + k + '"]').href = H + t[k][1];
@@ -990,18 +969,10 @@
       .then(function (d) { clearTimeout(timer); var c = pick(d); if (!c) throw d; return String(c).toUpperCase(); });
   }
 
-  sel.addEventListener('change', function () {
-    try { localStorage.setItem(KEY, sel.value); } catch (e) {}
-    show(sel.value);
-  });
-
-  var saved = null;
-  try { saved = localStorage.getItem(KEY); } catch (e) {}
-  if (saved && P[saved]) { show(saved); return; }
-
   root.classList.add('is-loading');
+  if (hint) hint.classList.add('is-loading');
   var done = false;
-  function finish(code) { if (done) return; done = true; root.classList.remove('is-loading'); show(code); }
+  function finish(code) { if (done) return; done = true; root.classList.remove('is-loading'); if (hint) hint.classList.remove('is-loading'); show(code); }
   setTimeout(function () { finish('XX'); }, 4000);
   get('https://api.country.is/', function (d) { return d.country; })
     .catch(function () { return get('https://get.geojs.io/v1/ip/country.json', function (d) { return d.country; }); })

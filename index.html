@@ -446,10 +446,10 @@
       <div class="k-plans k-plans--tri" data-plans>
         <div class="k-plan">
           <div class="k-plan__body">
-            <h3 class="k-plan__kicker">Básico</h3>
+            <div class="k-plan__label"><h3>Básico</h3><span class="k-plan__off">45&nbsp;% OFF</span></div>
             <p class="k-plan__qty"><b>250</b> historias al mes</p>
             <div class="k-price">
-              <b data-price="basico">18,52</b><span class="k-price__cur" data-cur>USD</span>
+              <b data-price="basico">18,52</b><span class="k-price__cur" data-cur>USD</span><s><span class="k-sr">Precio regular: </span><span data-regular="basico">33,99</span></s>
             </div>
             <p class="k-price__per">/ mes · precio Founders</p>
             <a class="k-btn k-btn--big" data-link="basico" href="https://pay.hotmart.com/K108218165Y?off=5evacyyg">Elegir Básico</a>
@@ -457,10 +457,10 @@
         </div>
         <div class="k-plan">
           <div class="k-plan__body">
-            <h3 class="k-plan__kicker">Pro</h3>
+            <div class="k-plan__label"><h3>Pro</h3><span class="k-plan__off">45&nbsp;% OFF</span></div>
             <p class="k-plan__qty"><b>500</b> historias al mes</p>
             <div class="k-price">
-              <b data-price="pro">34,22</b><span class="k-price__cur" data-cur>USD</span>
+              <b data-price="pro">34,22</b><span class="k-price__cur" data-cur>USD</span><s><span class="k-sr">Precio regular: </span><span data-regular="pro">61,99</span></s>
             </div>
             <p class="k-price__per">/ mes · precio Founders</p>
             <a class="k-btn k-btn--big" data-link="pro" href="https://pay.hotmart.com/K108218165Y?off=xci2dt7g">Elegir Pro</a>
@@ -468,10 +468,10 @@
         </div>
         <div class="k-plan">
           <div class="k-plan__body">
-            <h3 class="k-plan__kicker">Premium</h3>
+            <div class="k-plan__label"><h3>Premium</h3><span class="k-plan__off">45&nbsp;% OFF</span></div>
             <p class="k-plan__qty"><b>1000</b> historias al mes</p>
             <div class="k-price">
-              <b data-price="premium">62,48</b><span class="k-price__cur" data-cur>USD</span>
+              <b data-price="premium">62,48</b><span class="k-price__cur" data-cur>USD</span><s><span class="k-sr">Precio regular: </span><span data-regular="premium">113,99</span></s>
             </div>
             <p class="k-price__per">/ mes · precio Founders</p>
             <a class="k-btn k-btn--big" data-link="premium" href="https://pay.hotmart.com/K108218165Y?off=emw0exes">Elegir Premium</a>
@@ -935,16 +935,17 @@
   var root = document.querySelector('[data-plans]');
   if (!root) return;
   var H = 'https://pay.hotmart.com/K108218165Y?off=';
-  var USD = { cur: 'USD', basico: ['18,99', 'sxfnswcl'], pro: ['33,99', '86rbtab4'], premium: ['61,99', 'mzl8z3jk'] };
+  var USD = { cur: 'USD', basico: ['18,99', 'sxfnswcl', '34,99'], pro: ['33,99', '86rbtab4', '61,99'], premium: ['61,99', 'mzl8z3jk', '112,99'] };
+  // [Founders price, Hotmart offer, regular price shown crossed out]
   var P = {
-    CO: { cur: 'COP', basico: ['59.900', 'msr5k3x4'], pro: ['109.900', 'k8uqpqc3'], premium: ['199.900', 'aviu8bvj'] },
-    MX: { cur: 'MXN', basico: ['429', 'beabtb7t'], pro: ['779', '7m0w8ppp'], premium: ['1.429', 'qab0n72p'] },
-    ES: { cur: 'EUR', basico: ['22,99', 'y5vcxw9f'], pro: ['42,99', 'ls5gotkc'], premium: ['77,99', 'tl3ci050'] },
-    PE: { cur: 'PEN', basico: ['69', 'a4cpkytl'], pro: ['129', 'pr1wuaq5'], premium: ['229', 'i9yo2j9k'] },
-    CL: { cur: 'CLP', basico: ['22.990', 'k18xzpxh'], pro: ['41.990', 'ui14xxjc'], premium: ['76.990', 'ikmtpjmh'] },
-    BR: { cur: 'BRL', basico: ['109', 'quq0kzvc'], pro: ['199', 'hl9mk02o'], premium: ['369', '621jui39'] },
+    CO: { cur: 'COP', basico: ['59.900', 'msr5k3x4', '108.900'], pro: ['109.900', 'k8uqpqc3', '199.900'], premium: ['199.900', 'aviu8bvj', '363.900'] },
+    MX: { cur: 'MXN', basico: ['429', 'beabtb7t', '779'], pro: ['779', '7m0w8ppp', '1.419'], premium: ['1.429', 'qab0n72p', '2.599'] },
+    ES: { cur: 'EUR', basico: ['22,99', 'y5vcxw9f', '41,99'], pro: ['42,99', 'ls5gotkc', '77,99'], premium: ['77,99', 'tl3ci050', '141,99'] },
+    PE: { cur: 'PEN', basico: ['69', 'a4cpkytl', '129'], pro: ['129', 'pr1wuaq5', '239'], premium: ['229', 'i9yo2j9k', '419'] },
+    CL: { cur: 'CLP', basico: ['22.990', 'k18xzpxh', '41.990'], pro: ['41.990', 'ui14xxjc', '75.990'], premium: ['76.990', 'ikmtpjmh', '139.990'] },
+    BR: { cur: 'BRL', basico: ['109', 'quq0kzvc', '199'], pro: ['199', 'hl9mk02o', '359'], premium: ['369', '621jui39', '669'] },
     AR: USD, US: USD, CR: USD, EC: USD,
-    XX: { cur: 'USD', basico: ['18,52', '5evacyyg'], pro: ['34,22', 'xci2dt7g'], premium: ['62,48', 'emw0exes'] }
+    XX: { cur: 'USD', basico: ['18,52', '5evacyyg', '33,99'], pro: ['34,22', 'xci2dt7g', '61,99'], premium: ['62,48', 'emw0exes', '113,99'] }
   };
   var NAMES = { COP: 'pesos colombianos', MXN: 'pesos mexicanos', EUR: 'euros', PEN: 'soles', CLP: 'pesos chilenos', BRL: 'reales', USD: 'dólares (USD)' };
   var hint = document.querySelector('[data-region-hint]');
@@ -955,6 +956,7 @@
     ['basico', 'pro', 'premium'].forEach(function (k) {
       root.querySelector('[data-price="' + k + '"]').textContent = t[k][0];
       root.querySelector('[data-link="' + k + '"]').href = H + t[k][1];
+      root.querySelector('[data-regular="' + k + '"]').textContent = t[k][2];
     });
     root.querySelectorAll('[data-cur]').forEach(function (c) { c.textContent = t.cur; });
     if (hint) hint.textContent = 'Precios en ' + NAMES[t.cur] + '.';
